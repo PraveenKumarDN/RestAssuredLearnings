@@ -50,7 +50,7 @@ public class Learnings4XMLResponse {
                 body(xmlRequest).log().method().log().uri().
                 when().
                 post("/maps/api/place/add/json").
-                then().assertThat().statusCode(200).and().contentType(ContentType.JSON).and().
+                then().assertThat().statusCode(200).and().contentType(ContentType.XML).and().
                 body("status",equalTo("O")).log().ifValidationFails(LogDetail.ALL).
                 extract().
                 response();
@@ -74,7 +74,7 @@ public class Learnings4XMLResponse {
                         "}").
                 when().
                 post("/maps/api/place/delete/json").
-                then().assertThat().statusCode(200).and().contentType(ContentType.JSON).and().
+                then().assertThat().statusCode(200).and().contentType(ContentType.XML).and().
                 body("status",equalTo("OK")).
                 extract().
                 response();
