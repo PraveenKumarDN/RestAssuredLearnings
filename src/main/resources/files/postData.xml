@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<o><array json_class="array">
+    <e json_type="number">1</e>
+    <e json_type="number">2</e>
+    <e json_type="number">3</e>
+</array><boolean json_type="boolean">true</boolean>
+    <double json_type="number">2.0</double>
+    <integer json_type="number">1</integer>
+    <name json_type="string">JSON</name>
+    <nested json_class="object">
+        <id json_type="number">42</id>
+    </nested>
+</o>
