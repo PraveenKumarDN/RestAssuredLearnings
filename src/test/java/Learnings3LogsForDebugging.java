@@ -26,10 +26,12 @@ public class Learnings3LogsForDebugging {
     private void beforeClass() throws IOException {
         //load the config env.properties file
         Properties properties = new Properties() ;
-        File file = new File("/home/praveenkumar/workspace/restapi/src/main/resources/configs/env.properties") ;
+        //File file = new File("/home/praveenkumar/workspace/restapi/src/main/resources/configs/env.properties") ;
+        File file = new File("./configs/env.properties") ;
         FileInputStream fileInputStream = new FileInputStream(file) ;
         properties.load(fileInputStream);
         host = properties.getProperty("host") ;
+        System.out.println(host);
 
     }
 

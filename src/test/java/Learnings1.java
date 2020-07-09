@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.equalTo;
 /**
  * @author praveenkumar
  * This class contains the simple GET and POST rest calls java automation.
- * Note: RestAssured consists of 4 blocks: given(), when(), then(), extract()..
+ * Note: RestAssured consists of 4 blocks: given(), when(), then(), extract().
  */
 public class Learnings1 {
 

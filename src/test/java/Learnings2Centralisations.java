@@ -1,5 +1,7 @@
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.http.Header;
+import io.restassured.http.Headers;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
@@ -56,9 +58,36 @@ public class Learnings2Centralisations {
                 when().
                 post("/maps/api/place/add/json").
                 then().assertThat().statusCode(200).and().contentType(ContentType.JSON).and().
-                body("status",equalTo("OK")).
+                body("status",equalTo("OK")).and().header("string1", "string").
                 extract().
                 response();
+
+        Headers headers = given().
+                queryParam("key","qaclick123").
+                body("{"+
+                        "\"location\": {"+
+                        "\"lat\": -33.8669710,"+
+                        "\"lng\": 151.1958750"+
+                        "},"+
+                        "\"accuracy\": 50,"+
+                        "\"name\": \"Google Shoes!\","+
+                        "\"phone_number\": \"(02) 9374 4000\","+
+                        "\"address\": \"48 Pirrama Road, Pyrmont, NSW 2009, Australia\","+
+                        "\"types\": [\"shoe_store\"],"+
+                        "\"website\": \"http://www.google.com.au/\","+
+                        "\"language\": \"en-AU\""+
+                        "}").
+                when().
+                post("/maps/api/place/add/json").
+                then().assertThat().statusCode(200).and().contentType(ContentType.JSON).and().
+                body("status",equalTo("OK")).and().header("string1", "string").
+                extract().
+                response().getHeaders();
+        for(Header header : headers.asList()){
+            if(header.getName().equalsIgnoreCase("Session")){
+                String sessionToken = header.getValue() ;
+            }
+        }
 
         //converting raw to string response
         String stringResponse = response.asString() ;
